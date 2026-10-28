@@ -126,6 +126,8 @@ A documentation-only follow-up preserves all checked runtime/test bytes.
 Actual desktop/mobile rendering, geographic recognizability, control layout,
 native touch, WebGL/shader loss/restoration, clipboard, browser storage/cache
 lifecycle and performance remain unverified. Hosted bytes are publication proof.
-The concrete [browser proposal](../../../proposals/browser-checks.md) awaits owner
-approval under the supplied AGENTS.md §7. This source release does not complete
-the application acceptance or the wider all-project goal.
+The owner subsequently approved the concrete [browser proposal](../../../proposals/browser-checks.md)
+under the supplied AGENTS.md §7. Its [live results](browser-checks.md) are being
+recorded separately, including a native visual defect and follow-up shader fix.
+The frozen table above binds to the initial source. This source release does not
+complete application acceptance or the wider all-project goal.

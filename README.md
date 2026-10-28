@@ -63,6 +63,7 @@ the all-project goal.
 
 The [initial delivery receipt](docs/results/2026/10-28/initial-delivery.md)
 records 101 focused frontend checks and their proof limits. The [browser
-proposal](docs/proposals/browser-checks.md) describes the remaining rendered checks.
+proposal](docs/proposals/browser-checks.md) is now approved; [live check results](docs/results/2026/10-28/browser-checks.md)
+are in progress.
 Vercel reports the exact source ready and its connected asset reads match;
 native rendering and independent anonymous access remain pending browser proof.

@@ -11,27 +11,32 @@ attribute vec3 aNormal;
 attribute vec3 aColor;
 attribute vec3 aFlatColor;
 uniform mat4 uMatrix;
-uniform vec3 uEye;
 uniform float uRelief;
 uniform float uOffset;
-uniform float uFogNear;
-uniform float uFogFar;
 varying vec3 vColor;
-varying float vFog;
+varying mediump vec3 vPosition;
 void main() {
   vec3 position = vec3(aPosition.x, aPosition.y * uRelief + uOffset, aPosition.z);
   vec3 normal = normalize(mix(vec3(0.0, 1.0, 0.0), aNormal, uRelief));
   float light = 0.65 + 0.35 * max(0.0, dot(normal, normalize(vec3(-0.6, 1.0, 0.5))));
   vColor = mix(aFlatColor, aColor, uRelief) * light;
-  vFog = clamp((distance(position, uEye) - uFogNear) / (uFogFar - uFogNear), 0.0, 1.0);
+  vPosition = position;
   gl_Position = uMatrix * vec4(position, 1.0);
 }`;
 const FRAGMENT = `
 precision mediump float;
 uniform vec3 uFogColor;
+uniform vec3 uEye;
+uniform float uFogNear;
+uniform float uFogFar;
 varying vec3 vColor;
-varying float vFog;
-void main() { gl_FragColor = vec4(mix(vColor, uFogColor, vFog * vFog), 1.0); }`;
+varying mediump vec3 vPosition;
+void main() {
+  vec3 fogDelta = (vPosition - uEye) / uFogFar;
+  float nearRatio = uFogNear / uFogFar;
+  float fog = clamp((length(fogDelta) - nearRatio) / (1.0 - nearRatio), 0.0, 1.0);
+  gl_FragColor = vec4(mix(vColor, uFogColor, fog * fog), 1.0);
+}`;
 const POINT_VERTEX = `
 attribute vec3 aPosition;
 uniform mat4 uMatrix;
