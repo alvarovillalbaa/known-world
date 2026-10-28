@@ -24,7 +24,7 @@
         <button type="button" data-region="westeros" aria-pressed="false">Westeros</button>
         <button type="button" data-region="essos" aria-pressed="false">Essos</button>
       </div>
-      <div class="header-actions"><button id="help-button" class="quiet-button" type="button" aria-haspopup="dialog"><span aria-hidden="true">?</span><span class="wide-label">How to explore</span></button><button id="about-button" class="quiet-button about-button" type="button" aria-haspopup="dialog">About</button></div>
+      <div class="header-actions"><button id="help-button" class="quiet-button" type="button" aria-label="How to explore" aria-haspopup="dialog"><span aria-hidden="true">?</span><span class="wide-label">How to explore</span></button><button id="about-button" class="quiet-button about-button" type="button" aria-haspopup="dialog">About</button></div>
     </header>
 
     <section id="explore-panel" class="explore-panel" aria-label="Explore the atlas">
@@ -56,7 +56,7 @@
 
     <aside class="map-tools" aria-label="Map tools">
       <details id="layers-panel" class="layers-panel"><summary><span aria-hidden="true">▱</span> Map layers</summary><div class="layers-content"><label><span><strong>Terrain relief</strong><small>See the shape of the land</small></span><input id="terrain-toggle" type="checkbox" checked></label><label><span><strong>Place labels</strong><small>Names along the way</small></span><input id="labels-toggle" type="checkbox" checked></label></div></details>
-      <button id="share-view" class="share-button" type="button"><span aria-hidden="true">↗</span><span>Share view</span></button>
+      <button id="share-view" class="share-button" type="button" aria-label="Share view"><span aria-hidden="true">↗</span><span>Share view</span></button>
     </aside>
 
     <nav class="navigation" aria-label="3D map navigation">
