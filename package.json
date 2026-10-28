@@ -1,0 +1,14 @@
+{
+  "name": "known-world",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An unofficial 3D atlas of Westeros and Essos, built with native browser graphics.",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.js",
+    "dev": "node scripts/dev.mjs"
+  },
+  "engines": { "node": ">=24 <25" },
+  "license": "MIT"
+}

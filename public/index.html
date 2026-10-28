@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#142b31">
+  <meta name="description" content="An unofficial, interactive 3D atlas of Westeros and Essos. Explore interpretive terrain, find familiar places and make the journey your own.">
+  <title>The Known World — an unofficial 3D atlas</title>
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/src/app.js"></script>
+</head>
+<body>
+  <a id="skip-search" class="skip-link" href="#place-search">Skip to place search</a>
+  <main id="atlas-app">
+    <canvas id="atlas" tabindex="0" aria-label="Three-dimensional atlas of Westeros and Essos" aria-describedby="map-instructions">The 3D terrain needs WebGL. You can still explore the place catalog using search and the place list.</canvas>
+    <div class="map-vignette" aria-hidden="true"></div>
+    <div id="map-labels" aria-hidden="true"></div>
+
+    <header class="atlas-header">
+      <a class="brand" href="/" aria-label="The Known World home"><img src="/icon.svg" alt="" width="38" height="38"><span><strong>The Known World</strong><small>AN UNOFFICIAL ATLAS</small></span></a>
+      <div class="region-switcher" role="group" aria-label="Continent viewpoint">
+        <button type="button" data-region="all" aria-pressed="true">The world</button>
+        <button type="button" data-region="westeros" aria-pressed="false">Westeros</button>
+        <button type="button" data-region="essos" aria-pressed="false">Essos</button>
+      </div>
+      <div class="header-actions"><button id="help-button" class="quiet-button" type="button" aria-haspopup="dialog"><span aria-hidden="true">?</span><span class="wide-label">How to explore</span></button><button id="about-button" class="quiet-button about-button" type="button" aria-haspopup="dialog">About</button></div>
+    </header>
+
+    <section id="explore-panel" class="explore-panel" aria-label="Explore the atlas">
+      <div class="sheet-heading"><div><p class="eyebrow">A JOURNEY THROUGH</p><h1>Ice, fire &amp; everything between.</h1></div><button id="sheet-toggle" type="button" aria-controls="sheet-content" aria-expanded="true" aria-label="Collapse exploration panel"><span aria-hidden="true">⌄</span></button></div>
+      <div id="sheet-content" class="sheet-content">
+        <div class="explore-tabs" role="group" aria-label="Explore or view saved places"><button id="places-tab" type="button" aria-pressed="true">Explore places</button><button id="saved-tab" type="button" aria-pressed="false">Saved <span id="saved-count">0</span></button></div>
+        <div id="catalog-view">
+          <form id="search-form" role="search"><label class="sr-only" for="place-search">Search places</label><span class="search-symbol" aria-hidden="true">⌕</span><input id="place-search" type="search" maxlength="120" placeholder="Find a place" autocomplete="off" spellcheck="false" aria-controls="search-results"><button id="clear-search" type="button" aria-label="Clear search" hidden>×</button></form>
+          <fieldset id="category-filters"><legend class="sr-only">Place types shown on the atlas</legend></fieldset>
+          <div class="list-heading"><span id="results-label">PLACES TO DISCOVER</span><span id="result-count" aria-live="polite"></span></div>
+          <ul id="search-results" class="place-list" aria-labelledby="results-label"></ul>
+          <p id="search-empty" class="empty-state" hidden>No places found. Try another name or a different continent.</p>
+        </div>
+        <section id="place-panel" class="place-panel" aria-labelledby="place-title" hidden>
+          <button id="close-place" class="back-button" type="button"><span aria-hidden="true">←</span> Back to places</button>
+          <p id="place-region" class="eyebrow"></p><h2 id="place-title" tabindex="-1"></h2><span id="place-type" class="place-type"></span>
+          <p id="place-description" class="place-description"></p>
+          <div class="place-actions"><button id="fly-to" class="primary-button" type="button" data-viewer-control>Fly here <span aria-hidden="true">↗</span></button><button id="bookmark-place" class="save-button" type="button" aria-pressed="false"><span aria-hidden="true">◇</span><span id="bookmark-label">Save place</span></button></div>
+          <a id="place-source" class="reference-link" target="_blank" rel="noopener noreferrer">Geographic reference <span aria-hidden="true">↗</span></a>
+          <p class="detail-footnote">Approximate positions. Interpretive terrain.<br>A little room for imagination.</p>
+        </section>
+        <section id="bookmarks-panel" aria-labelledby="bookmarks-title" hidden><div class="list-heading"><h2 id="bookmarks-title">YOUR SAVED PLACES</h2><span>ON THIS DEVICE</span></div><ul id="bookmark-results" class="place-list"></ul><p id="bookmarks-empty" class="empty-state">No saved places yet. Open a place and choose Save place to keep it here.</p></section>
+        <p id="storage-notice" class="storage-notice" role="status" hidden>Device storage is unavailable. Your saved places will stay here for this visit.</p>
+      </div>
+      <div class="panel-foot"><span class="tiny-compass" aria-hidden="true">✦</span><span>WANDER A LITTLE FURTHER</span><button id="panel-about" type="button" aria-label="About this unofficial atlas">i</button></div>
+    </section>
+
+    <div class="journey-bar"><button id="tour-toggle" type="button" aria-pressed="false" data-viewer-control><span id="tour-icon" aria-hidden="true">▷</span><span id="tour-label">Take the long way</span></button><span id="tour-status">A guided journey across both continents</span></div>
+
+    <aside class="map-tools" aria-label="Map tools">
+      <details id="layers-panel" class="layers-panel"><summary><span aria-hidden="true">▱</span> Map layers</summary><div class="layers-content"><label><span><strong>Terrain relief</strong><small>See the shape of the land</small></span><input id="terrain-toggle" type="checkbox" checked></label><label><span><strong>Place labels</strong><small>Names along the way</small></span><input id="labels-toggle" type="checkbox" checked></label></div></details>
+      <button id="share-view" class="share-button" type="button"><span aria-hidden="true">↗</span><span>Share view</span></button>
+    </aside>
+
+    <nav class="navigation" aria-label="3D map navigation">
+      <div class="compass"><button id="north-up" type="button" aria-label="Point north up" title="Point north up" data-viewer-control><span id="compass-needle" aria-hidden="true">✧</span><span class="compass-n" aria-hidden="true">N</span></button><span id="bearing" aria-hidden="true">000°</span></div>
+      <div class="navigation-grid"><button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in" data-viewer-control>+</button><button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out" data-viewer-control>−</button><button id="orbit-left" type="button" aria-label="Orbit left" title="Orbit left" data-viewer-control>↶</button><button id="orbit-right" type="button" aria-label="Orbit right" title="Orbit right" data-viewer-control>↷</button><button id="tilt-up" type="button" aria-label="Raise viewing angle" title="Raise viewing angle" data-viewer-control>⌃</button><button id="tilt-down" type="button" aria-label="Lower viewing angle" title="Lower viewing angle" data-viewer-control>⌄</button><button id="home-view" class="home-view" type="button" aria-label="Reset continent view" title="Reset continent view" data-viewer-control>⌂ <span>Reset view</span></button></div>
+    </nav>
+
+    <section id="viewer-status" class="viewer-status" role="status"><span class="status-mark" aria-hidden="true">✦</span><h2 id="viewer-status-title">Unfolding the atlas</h2><p id="viewer-status-message">Preparing the coastlines and the shape of the land.</p><button id="retry-view" class="primary-button" type="button" hidden>Reload atlas</button></section>
+    <p id="announcement" class="announcement" role="status" aria-live="polite"></p>
+    <footer class="atlas-footer"><p id="map-instructions"><span class="desktop-instructions">Drag to pan <span>·</span> Shift-drag to orbit <span>·</span> Scroll to zoom</span><span class="touch-instructions">Drag to explore <span>·</span> Pinch &amp; twist with two fingers</span></p><button id="credits-button" type="button">Stylized terrain · Unofficial fan atlas</button></footer>
+  </main>
+
+  <dialog id="controls-dialog" aria-labelledby="controls-title"><div class="dialog-heading"><p class="eyebrow">MAKE YOUR OWN WAY</p><button id="close-controls" class="close-button" type="button" aria-label="Close exploration guide">×</button></div><h2 id="controls-title">A world to wander.</h2><p>Move over the land, turn toward the horizon, or choose a familiar name to fly straight there.</p><dl class="controls-list"><div><dt>Move across the map</dt><dd>Drag · arrow keys</dd></div><div><dt>Orbit and change angle</dt><dd>Shift-drag or right-drag</dd></div><div><dt>Zoom</dt><dd>Scroll · + / −</dd></div><div><dt>Orbit with keys</dt><dd>Q / E</dd></div><div><dt>Raise / lower view</dt><dd>W / S</dd></div><div><dt>Reset the view</dt><dd>Home</dd></div></dl><p>On touch screens, drag with one finger. Pinch with two fingers to zoom and twist to orbit. The map buttons offer the same navigation without gestures.</p><p class="dialog-note">Keyboard controls apply when the map is focused. Search and saved places also work without the 3D view. Guided journeys stop when you interact or leave the tab; reduced motion keeps flights immediate and disables the automatic journey.</p><button id="focus-map" class="primary-button" type="button">Explore the map <span aria-hidden="true">↗</span></button></dialog>
+  <dialog id="about-dialog" aria-labelledby="about-title"><div class="dialog-heading"><p class="eyebrow">A NOTE FROM THE CARTOGRAPHER</p><button id="close-about" class="close-button" type="button" aria-label="Close about this atlas">×</button></div><h2 id="about-title">An imagined world.<br>A different perspective.</h2><p>The Known World is an unofficial atlas of the world created by George R. R. Martin. It is a curated view of Westeros and Essos, without character journeys or plot timelines.</p><p>The coastlines are original schematic geometry. Relief is generated for exploration, with approximate place positions; it is not canonically measured topography or a complete fictional planet. No third-party map tiles, textures or artwork are loaded.</p><p>Names and fictional geography belong to their respective rights holders. This project is not affiliated with or endorsed by them. Place panels link to their geographic references.</p><div class="about-links"><a href="https://quartermaester.info/" target="_blank" rel="noopener noreferrer">Reference from the project brief: Quartermaester <span aria-hidden="true">↗</span></a><a href="https://github.com/alvarovillalbaa/known-world/blob/main/docs/attribution.md" target="_blank" rel="noopener noreferrer">Sources &amp; cartography notes <span aria-hidden="true">↗</span></a><a href="https://github.com/alvarovillalbaa/known-world" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">↗</span></a></div><p class="dialog-note">No account, tracking, or external map service. Saved places stay in this browser. A shared link contains the view and selected place, without your saved list.</p></dialog>
+  <dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-heading"><p class="eyebrow">SEND A LITTLE WONDER</p><button id="close-share" class="close-button" type="button" aria-label="Close share view">×</button></div><h2 id="share-title">Meet me here.</h2><p>The link keeps this viewpoint, selected place and map layers.</p><label class="share-link-label" for="share-url">Link to this view</label><input id="share-url" type="text" readonly><p id="share-feedback" class="dialog-note" role="status">Copy this link to share the view.</p><button id="copy-link" class="primary-button" type="button">Copy link <span aria-hidden="true">↗</span></button></dialog>
+  <noscript><div class="noscript"><h1>The atlas needs JavaScript.</h1><p>Enable JavaScript to explore the 3D terrain, search places and use the map controls. This unofficial atlas loads no external map service.</p></div></noscript>
+</body>
+</html>
