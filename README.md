@@ -3,6 +3,9 @@
 An unofficial 3D atlas of Westeros and Essos. Move across the Narrow Sea, find a
 familiar castle, and turn toward the shape of the land.
 
+[Open the atlas](https://known-world-alvaro.vercel.app) ·
+[Personal source repository](https://github.com/alvarovillalbaa/known-world)
+
 Native WebGL renders an actual perspective height mesh with lighting, depth and
 selectable places. The cartography and procedural relief are original,
 stylized interpretations, with **48 curated places** across both continents.
@@ -61,3 +64,5 @@ the all-project goal.
 The [initial delivery receipt](docs/results/2026/10-28/initial-delivery.md)
 records 101 focused frontend checks and their proof limits. The [browser
 proposal](docs/proposals/browser-checks.md) describes the remaining rendered checks.
+Vercel reports the exact source ready and its connected asset reads match;
+native rendering and independent anonymous access remain pending browser proof.

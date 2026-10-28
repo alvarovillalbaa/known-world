@@ -1,8 +1,9 @@
 # The Known World initial source delivery
 
-28 October 2026. Status: implementation and 101 focused frontend checks passed;
-GitHub source and Vercel publication readback are pending. Native browser
-acceptance remains unverified. The all-project goal is active.
+28 October 2026. Status: implementation published, 101 focused frontend checks
+passed and exact-source connected hosted delivery verified. Native browser and
+independent anonymous-access acceptance remain unverified. The all-project goal
+is active.
 
 The [source brief](../../../spec.md) preserves the standalone Notion requirement:
 a 3D Westeros and Essos map with a Google Earth-like exploration experience and
@@ -94,6 +95,31 @@ install, application build, test database or dev server ran.
 | HTML | `9fb6e6328642804e775c209d564726285b37b808f20ab3fcea5d8e2719a308de` |
 | CSS | `c984bdb3af9c62ef8349df44944e1b4e10f80e8c7eff45fc1698f7af6190aca7` |
 | Icon | `8767a9302ddaff8efb697719f4fd7c668569e9904ae390a1e5839aac344c981d` |
+
+## Publication
+
+The dedicated public repository [alvarovillalbaa/known-world](https://github.com/alvarovillalbaa/known-world)
+has ID `1436868590`. Source
+[b1403f1e1485e623e3b2e69a04803e8dea8e91ce](https://github.com/alvarovillalbaa/known-world/commit/b1403f1e1485e623e3b2e69a04803e8dea8e91ce)
+was pushed to `main`. Immutable connected GitHub reads matched all 26 local Git
+blobs, including runtime, tests, provenance, contract and browser proposal.
+
+Vercel project `prj_hPcCZ652ynWTUO8pBv021tAdQLMn` (`known-world-alvaro`) in the
+existing team deployed that exact source as
+`dpl_5VQtNuw18rnQH1TYg49wyapFbfec`. It reached `READY` and owns
+`known-world-alvaro.vercel.app`. Build logs record Node `v24.22.1`, the unchanged
+version-only install command, the successful source checker and static output
+completion in 667 ms. This is build output timing, not gameplay/render latency.
+No package installation, paid plan or Auth/protection configuration change ran.
+
+Connected GETs returned 200 with the expected HTML/CSS/SVG/JavaScript types for
+the root page and all seven referenced runtime assets. Every complete response
+text equals its immutable GitHub source; their SHA-256 values are above. The
+connected fetch tool can use authenticated/share-link access, so these reads do
+not prove anonymous access. The independent local HTTP probe failed at DNS
+resolution, and the external web reader could not access the new hostname.
+Neither result is treated as an Auth failure or proof of public readiness.
+A documentation-only follow-up preserves all checked runtime/test bytes.
 
 ## Remaining acceptance
 
