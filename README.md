@@ -55,15 +55,17 @@ camera/URL/bookmark validation, pure geometry, the WebGL viewer and the atlas UI
 is [MIT](LICENSE); fictional setting/place names retain their creator association
 as explained in [attribution](docs/attribution.md).
 
-Source/pure/VM checks and exact hosted source delivery establish bounded evidence.
-Actual desktop/mobile rendering, input, WebGL lifecycle and native storage need
-separate browser acceptance. The user’s AGENTS.md section 7 requires explicit
-approval for those checks. This source implementation alone does not complete
-the all-project goal.
-
 The [initial delivery receipt](docs/results/2026/10-28/initial-delivery.md)
-records 101 focused frontend checks and their proof limits. The [browser
-proposal](docs/proposals/browser-checks.md) is now approved; [live check results](docs/results/2026/10-28/browser-checks.md)
-are in progress.
-Vercel reports the exact source ready and its connected asset reads match;
-native rendering and independent anonymous access remain pending browser proof.
+records **101 passing focused frontend checks**, source provenance and exact
+hosted delivery. The approved [live Chrome checks](docs/results/2026/10-28/browser-checks.md)
+also exercised actual WebGL rendering, desktop navigation and marker picking,
+search/filters, bookmark reload/removal, shared-view restoration and narrow
+layouts at 390×844 and 390×568. They exposed and closed an ocean-fog seam and
+missing accessible names on compact controls.
+
+Those narrow checks used desktop Chrome viewport overrides. Native phone touch,
+graphics-context recovery, reduced-motion behavior, exact OS clipboard contents
+and clean anonymous access remain unverified. Authored lifecycle checks retain
+their separate proof boundary. The wider all-project goal remains active.
+
+![Atlas in the checked desktop browser](docs/results/2026/10-28/screenshots/desktop-final.jpg)

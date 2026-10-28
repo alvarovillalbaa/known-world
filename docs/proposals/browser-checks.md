@@ -1,8 +1,10 @@
 # Focused published-browser acceptance
 
-Status: prepared for explicit owner approval under the supplied AGENTS.md §7.
-No browser/dev-server execution is authorized by this document alone. Source
-implementation, authored checks and exact hosted delivery have separate evidence.
+Status: explicitly approved by Alvaro on 28 October 2026 under the supplied
+AGENTS.md §7. He answered “Approve Known World browser checks” for the scope
+frozen at initial source `b1403f1e1485e623e3b2e69a04803e8dea8e91ce`.
+The [bounded results](../results/2026/10-28/browser-checks.md) retain capability
+gaps. Source checks, hosted delivery and native acceptance are separate evidence.
 
 ## Scope
 

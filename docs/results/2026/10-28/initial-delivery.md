@@ -1,9 +1,9 @@
 # The Known World initial source delivery
 
 28 October 2026. Status: implementation published, 101 focused frontend checks
-passed and exact-source connected hosted delivery verified. Native browser and
-independent anonymous-access acceptance remain unverified. The all-project goal
-is active.
+passed and exact-source connected hosted delivery verified. This receipt freezes
+the initial source; subsequent approved native checks and fixes are recorded in
+the [browser receipt](browser-checks.md). The all-project goal is active.
 
 The [source brief](../../../spec.md) preserves the standalone Notion requirement:
 a 3D Westeros and Essos map with a Google Earth-like exploration experience and
@@ -85,7 +85,7 @@ syntax/imports, 75 unique DOM IDs, public assets and the provenance record.
 Storage Guard measured 14.4 GiB free versus 34.0 GiB required. No local package
 install, application build, test database or dev server ran.
 
-| Frozen runtime artifact | SHA-256 |
+| Frozen initial artifact at `b1403f1` | SHA-256 |
 | --- | --- |
 | `app.js` | `b710cc8b8cd9edffa67a2bb9f2ed7fbe5fd833b5cd9479764d2fdd083120dd08` |
 | `geo.js` | `8d64e90ba4f78cc30ed37708eb96aef1215f44a1908ffeeff6b9707ae3146abc` |
@@ -119,15 +119,16 @@ connected fetch tool can use authenticated/share-link access, so these reads do
 not prove anonymous access. The independent local HTTP probe failed at DNS
 resolution, and the external web reader could not access the new hostname.
 Neither result is treated as an Auth failure or proof of public readiness.
-A documentation-only follow-up preserves all checked runtime/test bytes.
+The immediate documentation-only follow-up `26d620c` preserved all checked
+runtime/test bytes; later browser fixes are recorded separately.
 
 ## Remaining acceptance
 
-Actual desktop/mobile rendering, geographic recognizability, control layout,
-native touch, WebGL/shader loss/restoration, clipboard, browser storage/cache
-lifecycle and performance remain unverified. Hosted bytes are publication proof.
-The owner subsequently approved the concrete [browser proposal](../../../proposals/browser-checks.md)
-under the supplied AGENTS.md §7. Its [live results](browser-checks.md) are being
-recorded separately, including a native visual defect and follow-up shader fix.
-The frozen table above binds to the initial source. This source release does not
-complete application acceptance or the wider all-project goal.
+At initial publication, actual rendered/input/storage/lifecycle acceptance was
+pending; hosted bytes were publication proof. The owner subsequently approved
+the concrete [browser proposal](../../../proposals/browser-checks.md) under the
+supplied AGENTS.md §7. The [completed bounded live checks](browser-checks.md)
+record actual Chrome rendering/input/storage observations, two follow-up fixes
+and remaining native capability gaps. The frozen table above binds to the
+initial source, not those later fixes. This release does not complete the wider
+all-project goal.
