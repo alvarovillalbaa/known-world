@@ -90,6 +90,17 @@ override was reset. Only the old task atlas tab and blank helper were closed;
 the final atlas tab remains marked as the deliverable. Unrelated tabs, accounts
 and browser data were preserved. No disposable bookmark remains.
 
+## Published evidence checkpoint
+
+Personal `main` matched `b9b37b39698ed117e0675c4bdbbca7dfa812eaa9` exactly.
+Immutable GitHub readback matched all nine changed documentation/image blobs,
+including the byte-preserving before-image rename. Canonical Vercel lookup
+resolved to `READY` deployment `dpl_hQDxMdex3tAjEGXh7xnRSpCgkVxH` at that exact
+commit. Connected GETs returned 200 and the expected MIME types for all eight
+public assets; every complete body matched its checked immutable source. The
+native captures above bind to runtime `78f0e8c`, unchanged by this documentation
+publication. This checkpoint records delivery, not additional browser acceptance.
+
 ## Remaining proof limits
 
 Native phone touch/pinch/twist, reduced-motion emulation, graphics-context
